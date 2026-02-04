@@ -71,11 +71,6 @@
 			path = MovieboxTests;
 			sourceTree = "<group>";
 		};
-		479673D52F335066001CC891 /* MovieboxUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = MovieboxUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,7 +165,6 @@
 			children = (
 				479673B42F335065001CC891 /* Moviebox */,
 				479673CB2F335066001CC891 /* MovieboxTests */,
-				479673D52F335066001CC891 /* MovieboxUITests */,
 				4721C11C2F338085001E8821 /* MovieBoxAPI */,
 				4721C1362F3381F3001E8821 /* Frameworks */,
 				479673B32F335065001CC891 /* Products */,
@@ -248,9 +242,6 @@
 			);
 			dependencies = (
 				479673D42F335066001CC891 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				479673D52F335066001CC891 /* MovieboxUITests */,
 			);
 			name = MovieboxUITests;
 			packageProductDependencies = (
