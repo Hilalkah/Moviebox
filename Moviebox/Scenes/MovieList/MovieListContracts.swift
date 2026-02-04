@@ -13,7 +13,7 @@ protocol MovieListViewModelProtocol {
     func selectMovie(at index: Int)
 }
 
-enum MovieListViewModelOutput {
+enum MovieListViewModelOutput: Equatable {
     case updateTitle(String)
     case setLoading(Bool)
     case showMovieList([MoviePresentation])
