@@ -27,6 +27,6 @@ final class MoviePresentation: NSObject {
 extension MoviePresentation {
     
     convenience init(movie: Movie) {
-        self.init(title: movie.name, detail: movie.artistName)
+        self.init(title: movie.title, detail: movie.overview)
     }
 }

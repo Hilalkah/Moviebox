@@ -11,6 +11,8 @@ let app = AppContainer()
 
 final class AppContainer {
     
+    let service = TopMoviesService()
+    
     lazy var router: AppRouter = {
        fatalError("Router must be initialized with a scene using createRouter(scene:)")
     }()

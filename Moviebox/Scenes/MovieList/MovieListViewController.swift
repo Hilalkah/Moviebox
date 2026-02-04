@@ -9,4 +9,55 @@ import UIKit
 
 final class MovieListViewController: UIViewController {
     
+    @IBOutlet weak var tableView: UITableView!
+    
+    var viewModel: MovieListViewModelProtocol! {
+        didSet {
+            viewModel.delegate = self
+        }
+    }
+    private var movieList: [MoviePresentation] = []
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        viewModel.load()
+    }
+}
+
+extension MovieListViewController: MovieListViewModelDelegate {
+    
+    func handleViewModelOutput(_ output: MovieListViewModelOutput) {
+        switch output {
+        case .updateTitle(let text):
+            title = text
+        case .setLoading(let isLoading):
+            UIApplication.shared.isNetworkActivityIndicatorVisible = isLoading
+        case .showMovieList(let movies):
+            movieList = movies
+            tableView.reloadData()
+        }
+    }
+}
+
+extension MovieListViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        movieList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieListCell", for: indexPath)
+            
+        let movie = movieList[indexPath.row]
+        cell.textLabel?.text = movie.title
+        cell.detailTextLabel?.text = movie.detail
+        return cell
+    }
+}
+extension MovieListViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        // TODO
+    }
 }
