@@ -50,23 +50,29 @@
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="elx-yk-Ocm"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="DUa-xh-E1Q">
+                                <rect key="frame" x="178" y="407.66666666666669" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="DUa-xh-E1Q" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="3W4-gK-LWN"/>
                             <constraint firstItem="uGB-d5-Q1j" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="7Kv-EJ-ogk"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="uGB-d5-Q1j" secondAttribute="trailing" id="OPs-R8-Pxm"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="uGB-d5-Q1j" secondAttribute="bottom" id="X66-9C-Edo"/>
+                            <constraint firstItem="DUa-xh-E1Q" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="p7P-Ah-X43"/>
                             <constraint firstItem="uGB-d5-Q1j" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="xNo-Fb-h71"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="DUa-xh-E1Q" id="hmw-GM-7rC"/>
                         <outlet property="tableView" destination="uGB-d5-Q1j" id="YQk-iS-9CE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="131"/>
+            <point key="canvasLocation" x="138.1679389312977" y="130.98591549295776"/>
         </scene>
     </scenes>
     <resources>

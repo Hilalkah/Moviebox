@@ -10,6 +10,7 @@ import UIKit
 final class MovieListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var viewModel: MovieListViewModelProtocol! {
         didSet {
@@ -22,6 +23,14 @@ final class MovieListViewController: UIViewController {
         super.viewDidLoad()
         viewModel.load()
     }
+    
+    private func setLoading(_ isLoading: Bool) {
+        if isLoading {
+            activityIndicator.startAnimating()
+        } else {
+            activityIndicator.stopAnimating()
+        }
+    }
 }
 
 extension MovieListViewController: MovieListViewModelDelegate {
@@ -31,7 +40,7 @@ extension MovieListViewController: MovieListViewModelDelegate {
         case .updateTitle(let text):
             title = text
         case .setLoading(let isLoading):
-            UIApplication.shared.isNetworkActivityIndicatorVisible = isLoading
+            setLoading(isLoading)
         case .showMovieList(let movies):
             movieList = movies
             tableView.reloadData()
