@@ -11,6 +11,7 @@ final class MovieListViewModel: MovieListViewModelProtocol {
     
     weak var delegate: MovieListViewModelDelegate?
     private let service: TopMoviesServiceProtocol
+    private var movies: [Movie] = []
     
     init(service: TopMoviesServiceProtocol) {
         self.service = service
@@ -26,8 +27,8 @@ final class MovieListViewModel: MovieListViewModelProtocol {
             
             switch result {
             case .success(let response):
-                let movies = response.results
-                let presentations = movies.map({ MoviePresentation(movie: $0)})
+                self.movies = response.results
+                let presentations = response.results.map({ MoviePresentation(movie: $0)})
                 self.notify(.showMovieList(presentations))
             case .failure(let error):
                 print(error)
@@ -36,7 +37,9 @@ final class MovieListViewModel: MovieListViewModelProtocol {
     }
     
     func selectMovie(at index: Int) {
-        // TODO: Implement
+        let movie = movies[index]
+        let viewModel = MovieDetailViewModel(movie: movie)
+        delegate?.navigate(to: .detail(viewModel))
     }
     
     private func notify(_ output: MovieListViewModelOutput) {
