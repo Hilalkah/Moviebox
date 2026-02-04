@@ -12,7 +12,6 @@ class ResourceLoader {
     enum MovieResource: String {
         case movie1
         case movie2
-        case movie3
     }
     
     static func loadMovie(resource: MovieResource) throws -> Movie {
