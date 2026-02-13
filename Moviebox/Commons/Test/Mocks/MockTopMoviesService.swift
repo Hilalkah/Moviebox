@@ -7,11 +7,11 @@
 
 import Foundation
 
-final class MockTopMoviesService: TopMoviesServiceProtocol {
-    
+final class MockTopMoviesService: NetworkManagerProtocol {
     var movies: [Movie] = []
     
-    func fetchTopMovies(completion: @escaping (Result<TopMoviesResponse>) -> Void) {
-        completion(.success(TopMoviesResponse(results: movies)))
+    func fetch<T: BaseRequest>(with requestModel: T) async throws -> T.responseModel {
+        let data = TopMoviesResponseModel(results: movies)
+        return data as! T.responseModel
     }
 }

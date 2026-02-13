@@ -9,7 +9,7 @@ import Foundation
 
 protocol MovieListViewModelProtocol {
     var delegate: MovieListViewModelDelegate? { get set }
-    func load()
+    func load() async
     func selectMovie(at index: Int)
 }
 
