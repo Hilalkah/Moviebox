@@ -21,7 +21,9 @@ final class MovieListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.load()
+        Task {
+            await viewModel.load()
+        }
     }
     
     private func setLoading(_ isLoading: Bool) {

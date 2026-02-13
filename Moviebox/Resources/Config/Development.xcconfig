@@ -1,0 +1,11 @@
+//
+//  Development.xcconfig
+//  Moviebox
+//
+//  Created by Hilal Kahraman on 13.02.2026.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://developer.apple.com/documentation/xcode/adding-a-build-configuration-file-to-your-project
+
+API_KEY = ed63bd3f7b8971c6e99b77235fa44110
