@@ -18,7 +18,7 @@ class ResourceLoader {
         let bundle = Bundle.test
         let url = try bundle.url(forResource: resource.rawValue, withExtension: "json").unwrap()
         let data = try Data(contentsOf: url)
-        let decoder = Decoders.plainDateDecoder
+        let decoder = Decoders.dateDecoder
         let movie = try decoder.decode(Movie.self, from: data)
         return movie
     }

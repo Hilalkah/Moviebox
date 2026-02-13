@@ -10,29 +10,27 @@ import Foundation
 final class MovieListViewModel: MovieListViewModelProtocol {
     
     weak var delegate: MovieListViewModelDelegate?
-    private let service: TopMoviesServiceProtocol
+    private let service: NetworkManagerProtocol
     private var movies: [Movie] = []
     
-    init(service: TopMoviesServiceProtocol) {
+    init(service: NetworkManagerProtocol) {
         self.service = service
     }
     
-    func load() {
+    func load() async {
         notify(.updateTitle("Movies"))
         notify(.setLoading(true))
         
-        service.fetchTopMovies { [weak self] (result) in
-            guard let self else { return }
-            self.notify(.setLoading(false))
+        defer { notify(.setLoading(false)) }
+        do {
+            let movieRequest = TopMoviesRequestModel()
+            let response = try await service.fetch(with: movieRequest)
+            movies = response.results
+            let presentations = response.results.map({ MoviePresentation(movie: $0)})
+            notify(.showMovieList(presentations))
             
-            switch result {
-            case .success(let response):
-                self.movies = response.results
-                let presentations = response.results.map({ MoviePresentation(movie: $0)})
-                self.notify(.showMovieList(presentations))
-            case .failure(let error):
-                print(error)
-            }
+        } catch {
+            print(error)
         }
     }
     
