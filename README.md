@@ -9,3 +9,5 @@ List best movies from API
 - Clean architecture
 - Protocol-Oriented Programming
 - Dependency Injection
+- URLSession
+- XCTest
