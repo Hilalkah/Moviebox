@@ -22,14 +22,14 @@ final class MovieboxTests: XCTestCase {
         viewModel.delegate = view
     }
 
-    func testExample() throws {
+    func testExample() async throws {
         // Given:
         let movie1 = try ResourceLoader.loadMovie(resource: .movie1)
         let movie2 = try ResourceLoader.loadMovie(resource: .movie2)
         service.movies = [movie1, movie2]
         
         // When:
-        viewModel.load()
+        await viewModel.load()
                 
         // Then:
         XCTAssertEqual(view.outputs.count, 4)
@@ -42,19 +42,20 @@ final class MovieboxTests: XCTestCase {
         }
         
         XCTAssertEqual(try view.outputs.element(at: 1), .setLoading(true))
-        XCTAssertEqual(try view.outputs.element(at: 2), .setLoading(false))
         
         let expectedMovies = [movie1, movie2].map({ MoviePresentation(movie: $0)})
-        XCTAssertEqual(try view.outputs.element(at: 3), .showMovieList(expectedMovies))
+        XCTAssertEqual(try view.outputs.element(at: 2), .showMovieList(expectedMovies))
+        
+        XCTAssertEqual(try view.outputs.element(at: 3), .setLoading(false))
     }
     
-    func testNavigation() throws {
+    func testNavigation() async throws {
         // Given:
         let movie1 = try ResourceLoader.loadMovie(resource: .movie1)
         let movie2 = try ResourceLoader.loadMovie(resource: .movie2)
         service.movies = [movie1, movie2]
         
-        viewModel.load()
+        await viewModel.load()
         view.reset()
         
         // When:
