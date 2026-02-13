@@ -37,6 +37,26 @@
 			);
 			target = 479673B12F335065001CC891 /* Moviebox */;
 		};
+		479C6EE82F3FC31E0019A07B /* Exceptions for "MovieboxTests" folder in "Moviebox" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Helpers/ResourceLoader.swift,
+				Mocks/MockTopMoviesService.swift,
+				Resources/movie1.json,
+				Resources/movie2.json,
+			);
+			target = 479673B12F335065001CC891 /* Moviebox */;
+		};
+		479C6EE92F3FC31E0019A07B /* Exceptions for "MovieboxTests" folder in "MovieboxTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Helpers/ResourceLoader.swift,
+				Mocks/MockTopMoviesService.swift,
+				Resources/movie1.json,
+				Resources/movie2.json,
+			);
+			target = 479673C72F335066001CC891 /* MovieboxTests */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -50,6 +70,10 @@
 		};
 		479673CB2F335066001CC891 /* MovieboxTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				479C6EE82F3FC31E0019A07B /* Exceptions for "MovieboxTests" folder in "Moviebox" target */,
+				479C6EE92F3FC31E0019A07B /* Exceptions for "MovieboxTests" folder in "MovieboxTests" target */,
+			);
 			path = MovieboxTests;
 			sourceTree = "<group>";
 		};
