@@ -35,6 +35,7 @@ final class MovieListViewModel: MovieListViewModelProtocol {
     }
     
     func selectMovie(at index: Int) {
+        guard movies.indices.contains(index) else { return }
         let movie = movies[index]
         let viewModel = MovieDetailViewModel(movie: movie)
         delegate?.navigate(to: .detail(viewModel))
