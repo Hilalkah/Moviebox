@@ -13,6 +13,12 @@ protocol NetworkManagerProtocol {
 
 final class NetworkManager: NetworkManagerProtocol {
     
+    let urlSession: URLSession
+    
+    init(urlSession: URLSession = .shared) {
+        self.urlSession = urlSession
+    }
+    
     func fetch<T: BaseRequest>(with requestModel: T) async throws -> T.responseModel {
         
         var urlComponents = URLComponents(url: requestModel.baseUrl, resolvingAgainstBaseURL: false)
@@ -26,7 +32,7 @@ final class NetworkManager: NetworkManagerProtocol {
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = requestModel.httpMethod?.rawValue
         
-        let (data, response) = try await URLSession.shared.data(for: urlRequest)
+        let (data, response) = try await urlSession.data(for: urlRequest)
         
         guard let response = response as? HTTPURLResponse,
               (200..<299).contains(response.statusCode) else {
